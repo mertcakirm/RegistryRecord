@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using RegistryRecord.Data;
@@ -11,6 +12,8 @@ namespace RegistryRecord.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
+
 public class OfficerController : ControllerBase
 {
     private readonly OfficerService  _officerService;

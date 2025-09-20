@@ -16,11 +16,11 @@ public class OfficerService
         _token = token;
     }
 
-    // Officer detay
+
     public async Task<Officer?> GetOfficerById(string registrationNumber, string token)
     {
         var userId = _token.GetUserIdFromToken(token);
-        // Gerekirse userId ile yetki kontrolü eklenebilir
+
         return await _repository.GetOfficer(registrationNumber);
     }
 
@@ -29,9 +29,12 @@ public class OfficerService
         List<IFormFile> files, 
         string token)
     {
-        // Token’dan userId al (opsiyonel)
         var userId = _token.GetUserIdFromToken(token);
 
+        var isOfficer = await _repository.IsOfficerExists(dto.RegistrationNumber);
+        if (isOfficer)
+            throw new Exception("Officer already exists");
+        
         var officer = new Officer
         {
             FirstName = dto.FirstName,
@@ -42,7 +45,7 @@ public class OfficerService
             RegistrationNumber = dto.RegistrationNumber
         };
 
-        // Dosyalar RegistrationNumber klasöründe saklanacak
+
         var folderPath = Path.Combine("wwwroot", "officerfiles", dto.RegistrationNumber);
         if (!Directory.Exists(folderPath))
             Directory.CreateDirectory(folderPath);
@@ -68,14 +71,13 @@ public class OfficerService
     }
 
     
-    // Officer sil (soft delete)
+
     public async Task<bool> DeleteOfficerAsync(int officerId, string token)
     {
         var userId = _token.GetUserIdFromToken(token);
         return await _repository.SoftDeleteOfficerAsync(officerId);
     }
 
-    // Tek dosya sil (soft delete)
     public async Task<bool> DeleteFileAsync(int fileId, string token)
     {
         var userId = _token.GetUserIdFromToken(token);

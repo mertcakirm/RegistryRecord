@@ -13,6 +13,11 @@ public class OfficerRepository
         _context = context;
     }
 
+    public async Task<bool> IsOfficerExists(string registrationNumber)
+    {
+        return await _context.Officers.AnyAsync(o => o.RegistrationNumber == registrationNumber);
+    }
+
     // Tek Officer çekme
     public async Task<Officer?> GetOfficer(string registrationNumber)
     {

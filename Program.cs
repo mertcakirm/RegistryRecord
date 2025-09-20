@@ -16,6 +16,35 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
     ));
 
+builder.Services.AddSwaggerGen(c =>
+{
+    // JWT Authorization için Swagger ayarı
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "RegistryRecord API",
+        Version = "v1"
+    });
+
+    var securityScheme = new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
+        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+        Description = "JWT Authorization header kullanımı. Örnek: Bearer {token}"
+    };
+
+    c.AddSecurityDefinition("Bearer", securityScheme);
+
+    var securityRequirement = new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    {
+        { securityScheme, new string[] { } }
+    };
+
+    c.AddSecurityRequirement(securityRequirement);
+});
+
 // === JWT Ayarları ===
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
@@ -40,11 +69,10 @@ builder.Services.AddAuthentication(options =>
 });
 
 // === Dependency Injection ===
-// Repository katmanı
 builder.Services.AddScoped<OfficerRepository>();
-
-// Service katmanı
 builder.Services.AddScoped<OfficerService>();
+builder.Services.AddScoped<AuthRepository>();
+builder.Services.AddScoped<AuthService>();
 
 // Token helper
 builder.Services.AddSingleton<CreteToken>();
