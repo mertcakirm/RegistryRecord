@@ -121,11 +121,6 @@
 /Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/RegistryRecord.MvcApplicationPartsAssemblyInfo.cache
 /Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/staticwebassets.build.json
 /Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/staticwebassets.development.json
-/Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/staticwebassets/msbuild.RegistryRecord.Microsoft.AspNetCore.StaticWebAssets.props
-/Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/staticwebassets/msbuild.build.RegistryRecord.props
-/Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.RegistryRecord.props
-/Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.RegistryRecord.props
-/Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/staticwebassets.pack.json
 /Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/scopedcss/bundle/RegistryRecord.styles.css
 /Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/Registry.2E853E8D.Up2Date
 /Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/RegistryRecord.dll
@@ -141,3 +136,12 @@
 /Users/mertcakir/BackEnd-Projects/RegistryRecord/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /Users/mertcakir/BackEnd-Projects/RegistryRecord/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
 /Users/mertcakir/BackEnd-Projects/RegistryRecord/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/mertcakir/BackEnd-Projects/RegistryRecord/bin/Debug/net8.0/RegistryRecord.staticwebassets.endpoints.json
+/Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/rpswa.dswa.cache.json
+/Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/RegistryRecord.sourcelink.json
+/Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/rjimswa.dswa.cache.json
+/Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/rjsmrazor.dswa.cache.json
+/Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/rjsmcshtml.dswa.cache.json
+/Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/staticwebassets.build.json.cache
+/Users/mertcakir/BackEnd-Projects/RegistryRecord/obj/Debug/net8.0/staticwebassets.build.endpoints.json
+/Users/mertcakir/BackEnd-Projects/RegistryRecord/bin/Debug/net8.0/RegistryRecord.staticwebassets.runtime.json
