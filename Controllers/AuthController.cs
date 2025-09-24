@@ -19,10 +19,8 @@ namespace RegistryRecord.Controllers
 
         [HttpPost("add-user")]
         [Authorize]
-        public async Task<IActionResult> AddUser([FromBody] AddUserDto dto)
+        public async Task<IActionResult> AddUser([FromHeader(Name = "Authorization")] string token,[FromBody] AddUserDto dto)
         {
-        var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
-            
             try
             {
                 var user = new User

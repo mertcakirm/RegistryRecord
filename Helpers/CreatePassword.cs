@@ -34,8 +34,6 @@ namespace RegistryRecord.Helpers
             hashOfInput = hashOfInput.Trim();
             hashedPassword = hashedPassword.Trim();
 
-            Console.WriteLine(hashOfInput);
-            Console.WriteLine(hashedPassword);
 
             return hashOfInput.Equals(hashedPassword, StringComparison.OrdinalIgnoreCase);
         }

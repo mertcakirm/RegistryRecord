@@ -25,7 +25,7 @@ public class OfficerController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<Officer?> GetOfficers(string registrationNumber,string token)
+    public async Task<Officer?> GetOfficers([FromHeader(Name = "Authorization")] string token,string registrationNumber)
     {
         if (string.IsNullOrEmpty(registrationNumber));
         if (string.IsNullOrEmpty(token));

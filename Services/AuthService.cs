@@ -12,15 +12,19 @@ namespace RegistryRecord.Services
     {
         private readonly AuthRepository _repository;
         private readonly IConfiguration _configuration;
+        private readonly CreteToken _creteToken;
 
-        public AuthService(AuthRepository repository, IConfiguration configuration)
+        public AuthService(AuthRepository repository, IConfiguration configuration, CreteToken creteToken)
         {
             _repository = repository;
             _configuration = configuration;
+            _creteToken = creteToken;
         }
 
         public async Task<User> RegisterUserAsync(User user,string token)
         {
+            if(token==null) throw new Exception("Bu email ile kayıtlı bir kullanıcı zaten mevcut.");
+            
             if (await _repository.UserExistsAsync(user.Email))
                 throw new Exception("Bu email ile kayıtlı bir kullanıcı zaten mevcut.");
 
@@ -38,29 +42,9 @@ namespace RegistryRecord.Services
             if (!CreatePassword.VerifyPassword(password, user.Password))
                 throw new Exception("Şifre yanlış.");
 
-            return GenerateJwtToken(user);
+            return _creteToken.GenerateToken(user);
         }
 
-        private string GenerateJwtToken(User user)
-        {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"]);
 
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new[]
-                {
-                    new Claim("id", user.Id.ToString()),
-                    new Claim(ClaimTypes.Email, user.Email)
-                }),
-                Expires = DateTime.UtcNow.AddHours(2),
-                SigningCredentials = new SigningCredentials(
-                    new SymmetricSecurityKey(key),
-                    SecurityAlgorithms.HmacSha256Signature)
-            };
-
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
-        }
     }
 }
